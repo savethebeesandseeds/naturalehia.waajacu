@@ -1,3 +1,3 @@
 # naturalehia.waajacu
 
-contact@waajacu.com
+please contact@waajacu.com

@@ -1,0 +1,103 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-language" content="en">
+    <style>        
+        body {
+            background-color: #000000;
+            color: #A9A9A9;
+            font-family: 'OCR A Std', monospace;
+            font-size: 12px;
+        }
+        article {
+            background-color: #000000;
+            color: rgb(211, 170, 96);
+            font-family: 'OCR A Std', monospace;
+            font-size: 12px;
+        }
+        .light {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .gray {
+            background-color: #000000;
+            color: #A9A9A9;
+        }
+        .gold {
+            background-color: #000000;
+            color: #d3aa60;
+        }
+        .waacamaya {
+            background-color: #000000;
+            max-width: 300px;
+        }
+    </style>
+    <script type='text/javascript'>
+        function getPageContents(callback,url,params) {
+            console.log(`getPageContents url ::: ${url}`);
+            let http = new XMLHttpRequest();
+            if(params!=null) {
+                http.open('POST', url, true);
+                http.setRequestHeader('Content-type', 'application/');
+            } else {
+                http.open('GET', url, true);
+            }
+            http.onreadystatechange = function() {
+                callback(http.responseText);    
+            }
+            http.send(params);
+        }
+        var homeurlfile = './src/homeurl.txt';
+        var homeurl = []
+        getPageContents(function(result) {
+            console.log(`fetch result ::: ${result}`);
+            homeurl = result.split('\n');
+            homeurl = homeurl.filter(function (el) {
+                return el != '';
+            });
+            homeurl = homeurl[0];
+            console.log(`fetch homeurl ::: ${homeurl}`);
+        }, homeurlfile, null);
+        function onreadyFun () {
+            console.log(`waka ready, with homeurl ::: ${homeurl}`);
+        }
+        window.onload = onreadyFun();
+    </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
+    <script type="text/javascript">
+       function reportLucks(){ // This communicates back to home to report lucks count.
+            var http = new XMLHttpRequest();
+            var lucksurl = homeurl + '/lucks';
+            var body = {'lucks': {'poetry': 0, 'commerce': clicks, 'waajacu': 0}};
+            console.log(`homeurl ::: ${lucksurl}`);
+            http.open('POST', lucksurl, true);
+            http.setRequestHeader('Content-type', 'text/plain');
+            http.send(JSON.stringify(body));
+            return null;
+        }
+    </script>
+    <script type="text/javascript">
+        var clicks = 0;
+        function highClick() {
+            clicks += 1;
+            document.getElementById("clicks").innerHTML = clicks;
+            reportLucks();
+        };
+        function lowClick() {
+            clicks -= 1;
+            document.getElementById("clicks").innerHTML = clicks;
+            reportLucks();
+        };
+        window.onbeforeunload = reportLucks;
+    </script>
+</head>
+<body>
+    <body>
+        <img src="./src/waacamaya_c.jpg" class="waacamaya" title="This ilustration was done by a machine at deepdreamgenerator.com/" ></img>
+        <article>
+            Waajacu commerce is a buissness.
+        </article>
+        <button type="button" onClick="highClick()">wish luck</button>
+        <button type="button" onClick="lowClick()">decline</button>
+        <p>lUCKS: <a id="clicks">0</a></p>
+    </body>.
+</body> 
