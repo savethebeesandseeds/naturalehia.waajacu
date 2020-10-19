@@ -1,0 +1,45 @@
+\documentclass[11pt, a4paper]{article} % Document font size and paper size
+\usepackage[dvipsnames,svgnames,table]{xcolor}
+\usepackage{verse} % Required for typesetting poems - this package drives this template
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{xcolor}
+\usepackage{pagecolor}
+\usepackage[normalem]{ulem}
+\usepackage{palatino} % Use the Palatino font by default
+\usepackage[margin=2cm, top=0.1cm]{geometry}
+\usepackage{lscape}
+\usepackage{relsize}
+\usepackage[T1]{fontenc}
+% --------
+\usepackage{miama}
+% --------
+%\usepackage{stix} % Alternative Stix font
+\setlength{\parindent}{0pt} % Disable paragraph indentation
+% Author styles
+\newcommand{\poemauthorcenter}[1]{\nopagebreak{\centering\footnotesize\textsc{#1}\par}} % Author as a footnote at the end of the poem center aligned
+\newcommand{\poemauthorright}[1]{\nopagebreak{\raggedleft\footnotesize\textsc{#1}\par}} % Author as a footnote at the end of the poem aligned right
+\renewcommand{\poemtitlefont}{\normalfont\bfseries\large\centering} % Define the poem title style
+\setlength{\stanzaskip}{0.75\baselineskip} % The distance between stanzas
+\pagestyle{empty} % Stop page numbering through the document
+\pagecolor{Tan!42!white}
+\graphicspath{ {/var/www/waacamaya/} }
+% new LaTeX commands
+\input Acorn.fd
+% \newfont{\letternaturalehia}{Acorn.tfm}
+
+\begin{document}
+\eject \pdfpagewidth=19cm \pdfpageheight=3.25cm
+\begin{minipage}[c][4.5cm]{8cm}
+\vspace{1cm}
+    \begin{center}
+        {\fontsize{46pt}{2pt}\usefont{U}{Acorn}{xl}{n} NATURALEHIA}
+    \end{center}
+\vspace{2cm}
+\end{minipage}
+\end{document}
